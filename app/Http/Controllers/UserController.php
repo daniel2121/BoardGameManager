@@ -9,19 +9,20 @@ use App\user;
 
 class UserController extends Controller
 {
-    //
-    public function create_user() {
-      echo "create_user";
-      user::insert([
-        'name' => 'Daniel'
-      ]);
+    public function create_user(Request $request) {
+      user::insert(['name' => $request['name']]);
     }
 
     public function list_users() {
-      echo "list_users";
+      $users = user::all();
+
+      foreach ($users as $user) {
+        echo $user->id . "-" . $user->name . "<br>";
+      }
     }
 
-    public function view_user() {
-      echo "view_user";
+    public function view_user($user_id) {
+      $user = user::find($user_id);
+      echo $user->id . "-" . $user->name . "<br>";
     }
 }
