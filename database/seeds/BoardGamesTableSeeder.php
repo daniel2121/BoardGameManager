@@ -11,8 +11,6 @@ class BoardGamesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('board_games')->insert(['name' => 'Chess', 'designers' => 'n/a', 'cover' => 'chess.jpg']);
-
         DB::table('board_games')->insert(['name' => 'Abalone', 'designers' => 'n/a', 'cover' => 'Abalone.jpg']);
         DB::table('board_games')->insert(['name' => 'Agon', 'designers' => 'n/a', 'cover' => 'Agon.jpg']);
         DB::table('board_games')->insert(['name' => 'Asalto', 'designers' => 'n/a', 'cover' => 'Asalto.jpg']);

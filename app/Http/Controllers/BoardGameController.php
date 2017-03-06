@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\board_game;
+use URL;
 
 class BoardGameController extends Controller
 {
@@ -26,7 +27,9 @@ class BoardGameController extends Controller
 
     public function view_board_game($bgame_id) {
       $board_game = board_game::find($bgame_id);
-      echo $board_game->id . "-" . $board_game->name. "-" . $board_game->designers. "-" . $board_game->cover . "<br>";
+      echo $board_game->id . "-" . $board_game->name. "-" . $board_game->designers. "-" . /*$board_game->cover . "<br>";*/
+
+      '<a href="'.URL::to('/').'/images/'.$board_game->cover.'">'.$board_game->cover.'</a><br>';
     }
 
     public function search_board_game(Request $request) {
