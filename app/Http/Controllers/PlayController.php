@@ -20,8 +20,21 @@ class PlayController extends Controller
     public function view_plays($user_id) {
       $plays = play::where('user_id', $user_id)->get();
 
-      foreach ($plays as $play) {
-        echo $play->user_id . "-" . $play->bgame_id . "<br>";
-      }
+      // foreach ($plays as $play) {
+      //   echo $play->user_id . "-" . $play->bgame_id . "<br>";
+      // }
+
+      return view('plays', ['plays' => $plays]);
+    }
+
+    public function search_plays(Request $request) {
+      $order_by = $request['ordered_by'];
+      $name_part = $request['name_part'];
+
+      $plays = play::where('name', 'like', '%'.$name_part.'%')
+                   ->orderBy($order_by, 'desc')
+                   ->get();
+
+      return view('plays', ['plays' => $plays]);
     }
 }

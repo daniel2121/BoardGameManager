@@ -23,4 +23,15 @@ class UserController extends Controller
       $user = user::find($user_id);
       echo $user->id . "-" . $user->name . "<br>";
     }
+
+    public function search_user(Request $request) {
+      $order_by = $request['ordered_by'];
+      $name_part = $request['name_part'];
+
+      $users = user::where('name', 'like', '%'.$name_part.'%')
+                   ->orderBy($order_by, 'desc')
+                   ->get();
+
+      return view('users', ['users' => $users]);
+    }
 }

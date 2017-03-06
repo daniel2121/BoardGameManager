@@ -11,23 +11,39 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// Users
+  // Create user
+  Route::post('/user', ["uses" => "UserController@create_user"]);
 
-// Route::get('/hello', function () { echo "get hello"; });
-// Route::post('/hello', function () { echo "post hello"; });
-// Route::put('/hello', function () { echo "put hello"; });
-// Route::delete('/hello', function () { echo "delete hello"; });
+  // List all users
+  Route::get('/users', "UserController@list_users");
 
-// TODO: ordering
-Route::post('/user', ["uses" => "UserController@create_user"]);
-Route::get('/user', "UserController@list_users");
-Route::get('/user/{user_id}', "UserController@view_user");
+  // View specific user
+  Route::get('/user/{user_id}', "UserController@view_user");
 
-Route::post('/board-game', "BoardGameController@add_board_game");
-Route::get('/board-game', "BoardGameController@list_board_games");
-Route::get('/board-game/{bgame_id}', "BoardGameController@view_board_game");
+  // Search user. Acts as ordering and filtering
+  Route::post('/users/search', ["uses" => "UserController@search_user"]);
 
-Route::post('/play', "PlayController@create_play");
-Route::get('/user/{user_id}/play', "PlayController@view_plays");
+
+// Board games
+  // Add Board game
+  Route::post('/board-game', "BoardGameController@add_board_game");
+
+  // List all Board games
+  Route::get('/board-games', "BoardGameController@list_board_games");
+
+  // View a specific Board game
+  Route::get('/board-game/{bgame_id}', "BoardGameController@view_board_game");
+
+  // Search Board games. Acts as ordering and filtering
+  Route::post('/board-game/search', "BoardGameController@search_board_game");
+
+// Plays
+  // Create new Play
+  Route::post('/play', "PlayController@create_play");
+
+  // View plays by users
+  Route::get('/user/{user_id}/plays', "PlayController@view_plays");
+
+  // Search for plays by user. Acts as ordering and filtering
+  Route::post('/user/{user_id}/plays/search', "PlayController@search_plays");

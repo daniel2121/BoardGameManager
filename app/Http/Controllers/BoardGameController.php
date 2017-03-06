@@ -32,4 +32,15 @@ class BoardGameController extends Controller
       $board_game = board_game::find($bgame_id);
       echo $board_game->id . "-" . $board_game->name. "-" . $board_game->designer. "-" . $board_game->cover . "<br>";
     }
+
+    public function search_board_game(Request $request) {
+      $order_by = $request['ordered_by'];
+      $name_part = $request['name_part'];
+
+      $board_games = board_game::where('name', 'like', '%'.$name_part.'%')
+                   ->orderBy($order_by, 'desc')
+                   ->get();
+
+      return view('board-games', ['board_games' => $board_games]);
+    }
 }
