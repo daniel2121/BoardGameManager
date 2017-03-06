@@ -9,11 +9,11 @@ use App\play;
 
 class PlayController extends Controller
 {
-    public function create_play() {
+    public function create_play(Request $request) {
       play::insert([
         'user_id' => $request['user_id'],
         'bgame_id' => $request['bgame_id'],
-        'date' => $request['date']
+        'date' => date('Y-m-d')//$request['date']
       ]);
     }
 

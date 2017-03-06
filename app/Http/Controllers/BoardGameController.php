@@ -10,10 +10,10 @@ use App\board_game;
 class BoardGameController extends Controller
 {
     //
-    public function add_board_game() {
+    public function add_board_game(Request $request) {
       board_game::insert([
         'name' => $request['name'],
-        'designer' => $request['designer'],
+        'designers' => $request['designers'],
         'cover' => $request['cover']
       ]);
     }
@@ -21,16 +21,12 @@ class BoardGameController extends Controller
     public function list_board_games() {
       $board_games = board_game::all();
 
-      // foreach ($board_games as $board_game) {
-      //   echo $board_game->id . "-" . $board_game->name . "<br>";
-      // }
-
       return view('board-games', ['board_games' => $board_games]);
     }
 
     public function view_board_game($bgame_id) {
       $board_game = board_game::find($bgame_id);
-      echo $board_game->id . "-" . $board_game->name. "-" . $board_game->designer. "-" . $board_game->cover . "<br>";
+      echo $board_game->id . "-" . $board_game->name. "-" . $board_game->designers. "-" . $board_game->cover . "<br>";
     }
 
     public function search_board_game(Request $request) {
