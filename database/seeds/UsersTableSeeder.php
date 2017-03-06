@@ -11,7 +11,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('users')->insert(['name' => 'user_'.str_random(10)]);
         DB::table('users')->insert(['name' => 'Maile Nolting']);
         DB::table('users')->insert(['name' => 'Mckenzie Gano']);
         DB::table('users')->insert(['name' => 'Lou Oswalt']);
