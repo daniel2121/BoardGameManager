@@ -16,9 +16,7 @@ class UserController extends Controller
     public function list_users() {
       $users = user::all();
 
-      foreach ($users as $user) {
-        echo $user->id . "-" . $user->name . "<br>";
-      }
+      return view('users', ['users' => $users]);
     }
 
     public function view_user($user_id) {

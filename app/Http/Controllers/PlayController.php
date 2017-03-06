@@ -17,8 +17,8 @@ class PlayController extends Controller
       ]);
     }
 
-    public function view_plays() {
-      $plays = play::all();
+    public function view_plays($user_id) {
+      $plays = play::where('user_id', $user_id)->get();
 
       foreach ($plays as $play) {
         echo $play->user_id . "-" . $play->bgame_id . "<br>";
