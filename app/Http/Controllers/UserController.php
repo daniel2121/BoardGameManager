@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\user;
 
@@ -14,7 +14,29 @@ class UserController extends Controller
     }
 
     public function list_users() {
-      $users = user::all();
+      $order  = Input::get('order');
+      $filter = Input::get('filter');
+      $min_id = Input::get('min_id');
+      $max_id = Input::get('max_id');
+
+      if ($order == '') {
+        $order = "id_asc";
+      }
+      if ($filter == '') {
+        $filter = "";
+      }
+      if ($min_id == '') {
+        $min_id = 0;
+      }
+      if ($max_id == '') {
+        $max_id = 9999;
+      }
+
+      $users = user::where('id', '<=', $max_id)
+                   ->where('id', '>=', $min_id)
+                   ->where('name', 'LIKE', '%'.$filter.'%')
+                   ->orderBy(explode("_", $order)[0],explode("_", $order)[1])
+                   ->get();
 
       return view('users', ['users' => $users]);
     }

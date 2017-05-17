@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\board_game;
 use URL;
@@ -20,7 +20,29 @@ class BoardGameController extends Controller
     }
 
     public function list_board_games() {
-      $board_games = board_game::all();
+      $order  = Input::get('order');
+      $filter = Input::get('filter');
+      $min_id = Input::get('min_id');
+      $max_id = Input::get('max_id');
+
+      if ($order == '') {
+        $order = "id_asc";
+      }
+      if ($filter == '') {
+        $filter = "";
+      }
+      if ($min_id == '') {
+        $min_id = 0;
+      }
+      if ($max_id == '') {
+        $max_id = 9999;
+      }
+
+      $board_games = board_game::where('id', '<=', $max_id)
+                               ->where('id', '>=', $min_id)
+                               ->where('name', 'LIKE', '%'.$filter.'%')
+                               ->orderBy(explode("_", $order)[0],explode("_", $order)[1])
+                               ->get();
 
       return view('board-games', ['board_games' => $board_games]);
     }
