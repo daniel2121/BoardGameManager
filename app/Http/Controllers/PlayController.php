@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\play;
 
@@ -18,11 +18,35 @@ class PlayController extends Controller
     }
 
     public function view_plays($user_id) {
-      $plays = play::where('user_id', $user_id)->get();
+      $order  = Input::get('order');
+      $bgame_max = Input::get('bgame_max');
+      $bgame_min = Input::get('bgame_min');
+      $min_id = Input::get('min_date');
+      $max_id = Input::get('max_date');
 
-      // foreach ($plays as $play) {
-      //   echo $play->user_id . "-" . $play->bgame_id . "<br>";
-      // }
+      if ($order == '') {
+        $order = "bgame_id-asc";
+      }
+      if ($bgame_max == '') {
+        $bgame_max = 9999;
+      }
+      if ($bgame_min == '') {
+        $bgame_min = 0;
+      }
+      if ($min_date == '') {
+        $min_date = '2000-01-01';
+      }
+      if ($max_date == '') {
+        $max_date = '2099-01-01';
+      }
+
+      $plays = play::where('user_id', $user_id)
+                   ->where('date', '<=', $max_date)
+                   ->where('date', '>=', $min_date)
+                   ->where('bgame_id', '<=', $bgame_max)
+                   ->where('bgame_id', '>=', $bgame_min)
+                   ->orderBy(explode("-", $order)[0],explode("-", $order)[1])
+                   ->get();
 
       return view('plays', ['plays' => $plays]);
     }
