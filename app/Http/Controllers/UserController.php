@@ -45,7 +45,8 @@ class UserController extends Controller
 
     public function view_user($user_id) {
       $user = user::find($user_id);
-      echo $user->id . "-" . $user->name . "<br>";
+      // echo $user->id . "-" . $user->name . "<br>";
+      return view('user', ['user' => $user]);
     }
 
     public function search_user(Request $request) {

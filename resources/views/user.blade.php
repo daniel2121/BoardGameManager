@@ -26,12 +26,10 @@ tr:nth-child(even) {
     <th>ID</th>
     <th>Name</th>
   </tr>
-  @foreach($users as $user)
   <tr>
     <td><a href="{{URL::to('/')}}/user/{{$user->id}}">{{$user->id}}</a></td>
     <td><a href="{{URL::to('/')}}/user/{{$user->id}}">{{$user->name}}</a></td>
   </tr>
-  @endforeach
 </table>
 
 </body>

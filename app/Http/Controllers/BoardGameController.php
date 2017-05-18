@@ -49,9 +49,10 @@ class BoardGameController extends Controller
 
     public function view_board_game($bgame_id) {
       $board_game = board_game::find($bgame_id);
-      echo $board_game->id . "-" . $board_game->name. "-" . $board_game->designers. "-" . /*$board_game->cover . "<br>";*/
+      // echo $board_game->id . "-" . $board_game->name. "-" . $board_game->designers. "-" . /*$board_game->cover . "<br>";*/
 
-      '<a href="'.URL::to('/').'/images/'.$board_game->cover.'">'.$board_game->cover.'</a><br>';
+      // '<a href="'.URL::to('/').'/images/'.$board_game->cover.'">'.$board_game->cover.'</a><br>';
+      return view('board-game', ['board_game' => $board_game]);
     }
 
     public function search_board_game(Request $request) {
