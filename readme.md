@@ -25,15 +25,17 @@ This tool was written using Laravel Framework.
 
 ## Get Requests
 
-http://127.0.0.1/middleware/BoardGameManager/public/user/1/plays?order=bgame_id-asc&bgame_max=2000&bgame_min=2=1&min_date=2000-01-01&max_date=2018-01-01
-http://127.0.0.1/middleware/BoardGameManager/public/users?order=id_asc&filter=&min_id=1&max_id=200
-http://127.0.0.1/middleware/BoardGameManager/public/user/1
-http://127.0.0.1/middleware/BoardGameManager/public/board-games?order=id_asc&filter=&min_id=0&max_id=2000
-http://127.0.0.1/middleware/BoardGameManager/public/board-game/1
+These are the URLs I use to test the system. To have them handy. Most likely, these URLs should be different for other installations.
+
+* http://127.0.0.1/middleware/BoardGameManager/public/user/1/plays?order=bgame_id-asc&bgame_max=2000&bgame_min=2=1&min_date=2000-01-01&max_date=2018-01-01
+* http://127.0.0.1/middleware/BoardGameManager/public/users?order=id_asc&filter=&min_id=1&max_id=200
+* http://127.0.0.1/middleware/BoardGameManager/public/user/1
+* http://127.0.0.1/middleware/BoardGameManager/public/board-games?order=id_asc&filter=&min_id=0&max_id=2000
+* http://127.0.0.1/middleware/BoardGameManager/public/board-game/1
 
 ## Post Requests
 
-post /user
-post /board-game
-post /play
-post /user/{user_id}/plays/search
+* post /user
+* post /board-game
+* post /play
+* post /user/{user_id}/plays/search
