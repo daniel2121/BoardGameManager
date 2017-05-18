@@ -21,8 +21,8 @@ class PlayController extends Controller
       $order  = Input::get('order');
       $bgame_max = Input::get('bgame_max');
       $bgame_min = Input::get('bgame_min');
-      $min_id = Input::get('min_date');
-      $max_id = Input::get('max_date');
+      $min_date = Input::get('min_date');
+      $max_date = Input::get('max_date');
 
       if ($order == '') {
         $order = "bgame_id-asc";
