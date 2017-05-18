@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\board_game;
 use URL;
+use Redirect;
 
 class BoardGameController extends Controller
 {
@@ -17,6 +18,8 @@ class BoardGameController extends Controller
         'designers' => $request['designers'],
         'cover' => $request['cover']
       ]);
+
+      return Redirect::back()->withSuccess('Message sent!');
     }
 
     public function list_board_games() {
@@ -49,9 +52,6 @@ class BoardGameController extends Controller
 
     public function view_board_game($bgame_id) {
       $board_game = board_game::find($bgame_id);
-      // echo $board_game->id . "-" . $board_game->name. "-" . $board_game->designers. "-" . /*$board_game->cover . "<br>";*/
-
-      // '<a href="'.URL::to('/').'/images/'.$board_game->cover.'">'.$board_game->cover.'</a><br>';
       return view('board-game', ['board_game' => $board_game]);
     }
 

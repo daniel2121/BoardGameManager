@@ -119,9 +119,9 @@ div.tab button.active {
     <legend>Add Board Game:</legend>
     Name:<br>
     <input type="text" name="name" value="">
-    Designers:<br>
+    <br>Designers:<br>
     <input type="text" name="designers" value="">
-    Cover:<br>
+    <br>Cover:<br>
     <input type="text" name="cover" value="">
     <br><br>
     <input type="submit" value="Submit">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\play;
+use Redirect;
 
 class PlayController extends Controller
 {
@@ -13,8 +14,11 @@ class PlayController extends Controller
       play::insert([
         'user_id' => $request['user_id'],
         'bgame_id' => $request['bgame_id'],
-        'date' => date('Y-m-d')//$request['date']
+        // 'date' => date('Y-m-d')
+        'date' => $request['date']
       ]);
+
+      return Redirect::back()->withSuccess('Message sent!');
     }
 
     public function view_plays($user_id) {
