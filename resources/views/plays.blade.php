@@ -45,10 +45,12 @@ tr:nth-child(even) {
   </tr>
   @foreach($plays as $play)
   <tr>
-    <td><a href="{{URL::to('/')}}/play/{{$play->id}}">{{$play->id}}</a></td>
+    <!-- <td><a href="{{URL::to('/')}}/play/{{$play->id}}">{{$play->id}}</a></td> -->
+    <td>{{$play->id}}</td>
     <td><a href="{{URL::to('/')}}/user/{{$play->user_id}}">{{$play->user_id}}</a></td>
     <td><a href="{{URL::to('/')}}/board-game/{{$play->bgame_id}}">{{$play->bgame_id}}</a></td>
-    <td><a href="{{URL::to('/')}}/play/{{$play->id}}">{{$play->date}}</a></td>
+    <!-- <td><a href="{{URL::to('/')}}/play/{{$play->id}}">{{$play->date}}</a></td> -->
+    <td>{{$play->date}}</td>
   </tr>
   @endforeach
 </table>
