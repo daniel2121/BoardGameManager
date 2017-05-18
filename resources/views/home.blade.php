@@ -1,20 +1,3 @@
-<!-- Home
-
-Creating new users (each user should have a unique id and a name)
-
-Listing the users in the system (ordering/filtering by specific attributes)
-
-Viewing a user's details
-
-Adding new board games to an online database
-
-Listing the board games available in the online database (ordering/filtering by specific attributes)
-
-Viewing a board game's details (a board game will always have an id, a name, a list of designers, and a .jpg file of the board game's cover art),
-
-Creating a new boardgame "play" (A play is associated to a specific user and to a specific game in the database, and contains a date. It can optionally also contain additional data such as the amount of time it took to complete the game, how many players were involved, and the id of the user that won the game, if applicable.),
-
-Viewing existing plays by user (ordering/filtering by board game and/or date). -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -177,13 +160,31 @@ div.tab button.active {
 </div>
 
 <div id="Createplay" class="tabcontent">
-  <h3>Create play</h3>
-  <p>Tokyo is the capital of Japan.</p>
+  <form action="{{URL::to('/')}}/play" method="POST">
+  <fieldset>
+    <legend>Create Play:</legend>
+    User ID:<br>
+    <input type="text" name="user_id" value="">
+    <br>Board Game ID:<br>
+    <input type="text" name="bgame_id" value="">
+    <br>Date:<br>
+    <input type="text" name="date" value="">
+    <br><br>
+    <input type="submit" value="Submit">
+  </fieldset>
+</form>
 </div>
 
 <div id="Viewplays" class="tabcontent">
-  <h3>View plays</h3>
-  <p>Tokyo is the capital of Japan.</p>
+  <form onSubmit="return processPlays();">
+  <fieldset>
+    <legend>View Plays:</legend>
+  User ID:<br>
+  <input type="text" name="url3" id="url3">
+  <br><br>
+  <input type="submit" value="Get">
+  </fieldset>
+  </form>
 </div>
 
 <script>
@@ -195,6 +196,12 @@ function processUser() {
 
 function processBoardGame() {
   var url= "{{URL::to('/')}}/board-game/" + document.getElementById("url2").value;
+  location.href=url;
+  return false;
+}
+
+function processPlays() {
+  var url= "{{URL::to('/')}}/user/" + document.getElementById("url3").value + "/plays";
   location.href=url;
   return false;
 }
