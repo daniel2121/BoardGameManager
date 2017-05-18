@@ -75,11 +75,11 @@ div.tab button.active {
 </div>
 
 <div id="Createuser" class="tabcontent">
-  <h3>Create user</h3>
+  <!-- <h3>Create user</h3> -->
   <!-- <p>London is the capital city of England.</p> -->
   <form action="{{URL::to('/')}}/user" method="POST">
   <fieldset>
-    <legend>Personal information:</legend>
+    <legend>Create User:</legend>
     Name:<br>
     <input type="text" name="name" value="">
     <!-- <br>
@@ -92,28 +92,88 @@ div.tab button.active {
 </div>
 
 <div id="Listusers" class="tabcontent">
-  <h3>List users</h3>
-  <p>Paris is the capital of France.</p>
+  <form action="{{URL::to('/')}}/users" method="GET">
+  <fieldset>
+    <legend>List Users:</legend>
+    Order:<br>
+    <input type="text" name="order" value="id_asc">
+    <br>Filter:<br>
+    <input type="text" name="filter" value="">
+    <br>Minimum ID:<br>
+    <input type="text" name="min_id" value="1">
+    <br>Maximum ID:<br>
+    <input type="text" name="max_id" value="200">
+    <br><br>
+    <input type="submit" value="Get">
+  </fieldset>
+</form>
 </div>
 
 <div id="Viewuser" class="tabcontent">
-  <h3>View user</h3>
-  <p>Tokyo is the capital of Japan.</p>
+  <form onSubmit="return processUser();">
+  <fieldset>
+    <legend>View User:</legend>
+  User ID:<br>
+  <input type="text" name="url" id="url">
+  <br><br>
+  <input type="submit" value="Get">
+  </fieldset>
+  </form>
+  <!-- <form action="{{URL::to('/')}}/users" method="GET">
+  <fieldset>
+    <legend>View User:</legend>
+    User ID:<br>
+    <input type="text" name="user_id" value="">
+    <br><br>
+    <input type="submit" value="Get">
+  </fieldset>
+</form> -->
 </div>
 
 <div id="Addboardgames" class="tabcontent">
-  <h3>Add board games</h3>
-  <p>Paris is the capital of France.</p>
+  <form action="{{URL::to('/')}}/board-game" method="POST">
+  <fieldset>
+    <legend>Add Board Game:</legend>
+    Name:<br>
+    <input type="text" name="name" value="">
+    Designers:<br>
+    <input type="text" name="designers" value="">
+    Cover:<br>
+    <input type="text" name="cover" value="">
+    <br><br>
+    <input type="submit" value="Submit">
+  </fieldset>
+</form>
 </div>
 
 <div id="Listboardgames" class="tabcontent">
-  <h3>List board games</h3>
-  <p>Tokyo is the capital of Japan.</p>
+  <form action="{{URL::to('/')}}/board-games" method="GET">
+  <fieldset>
+    <legend>List Board Games:</legend>
+    Order:<br>
+    <input type="text" name="order" value="id_asc">
+    <br>Filter:<br>
+    <input type="text" name="filter" value="">
+    <br>Minimum ID:<br>
+    <input type="text" name="min_id" value="0">
+    <br>Maximum ID:<br>
+    <input type="text" name="max_id" value="2000">
+    <br><br>
+    <input type="submit" value="Get">
+  </fieldset>
+</form>
 </div>
 
 <div id="Viewboardgame" class="tabcontent">
-  <h3>View board game</h3>
-  <p>Paris is the capital of France.</p>
+  <form onSubmit="return processBoardGame();">
+  <fieldset>
+    <legend>View Board Game:</legend>
+  User ID:<br>
+  <input type="text" name="url2" id="url2">
+  <br><br>
+  <input type="submit" value="Get">
+  </fieldset>
+  </form>
 </div>
 
 <div id="Createplay" class="tabcontent">
@@ -127,6 +187,18 @@ div.tab button.active {
 </div>
 
 <script>
+function processUser() {
+  var url= "{{URL::to('/')}}/user/" + document.getElementById("url").value;
+  location.href=url;
+  return false;
+}
+
+function processBoardGame() {
+  var url= "{{URL::to('/')}}/board-game/" + document.getElementById("url2").value;
+  location.href=url;
+  return false;
+}
+
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
