@@ -76,7 +76,19 @@ div.tab button.active {
 
 <div id="Createuser" class="tabcontent">
   <h3>Create user</h3>
-  <p>London is the capital city of England.</p>
+  <!-- <p>London is the capital city of England.</p> -->
+  <form action="{{URL::to('/')}}/user" method="POST">
+  <fieldset>
+    <legend>Personal information:</legend>
+    Name:<br>
+    <input type="text" name="name" value="">
+    <!-- <br>
+    Last name:<br>
+    <input type="text" name="lastname" value="Mouse"> -->
+    <br><br>
+    <input type="submit" value="Submit">
+  </fieldset>
+</form>
 </div>
 
 <div id="Listusers" class="tabcontent">

@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\user;
+use Redirect;
 
 class UserController extends Controller
 {
     public function create_user(Request $request) {
       user::insert(['name' => $request['name']]);
+      return Redirect::back()->withSuccess('Message sent!');
     }
 
     public function list_users() {
