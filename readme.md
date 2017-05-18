@@ -38,4 +38,3 @@ These are the URLs I use to test the system. To have them handy. Most likely, th
 * post /user
 * post /board-game
 * post /play
-* post /user/{user_id}/plays/search

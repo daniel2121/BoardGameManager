@@ -11,6 +11,9 @@
 |
 */
 
+// Home page to test whole system
+Route::get('/home', "HomeController@home");
+
 // Users
   // Create user
   Route::post('/user', ["uses" => "UserController@create_user"]);
@@ -46,4 +49,4 @@
   Route::get('/user/{user_id}/plays', ['uses' => "PlayController@view_plays"]);
 
   // Search for plays by user. Acts as ordering and filtering
-  Route::post('/user/{user_id}/plays/search', "PlayController@search_plays");
+  // Route::post('/user/{user_id}/plays/search', "PlayController@search_plays");
