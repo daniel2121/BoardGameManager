@@ -1,27 +1,39 @@
-# Laravel PHP Framework
+# BoardGameManager
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Tool designed to meet the description below. This project was implemented for the course "Middleware Technologies for Distributed Systems" for the academic year 2016-17 of the Politecnico di Milano.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+# Description
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+The goal of this project is to create a service that can help people keep track of their board games nights. The Board Game Manager should provide a REST API for:
 
-## Official Documentation
+* Creating new users (each user should have a unique id and a name),
+* Listing the users in the system (ordering/filtering by specific attributes),
+* Viewing a user's details,
+* Adding new board games to an online database,
+* Listing the board games available in the online database (ordering/filtering by specific attributes),
+* Viewing a board game's details (a board game will always have an id, a name, a list of designers, and a .jpg file of the board game's cover art),
+* Creating a new boardgame "play" (A play is associated to a specific user and to a specific game in the database, and contains a date. It can optionally also contain additional data such as the amount of time it took to complete the game, how many players were involved, and the id of the user that won the game, if applicable.),
+* Viewing existing plays by user (ordering/filtering by board game and/or date).
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+The API should be developed in such a way as to support Hypermedia whenever suitable.
 
-## Contributing
+# Software used
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+This tool was written using Laravel Framework.
 
-## Security Vulnerabilities
+# HTTP Requests
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+## Get Requests
 
-## License
+http://127.0.0.1/middleware/BoardGameManager/public/user/1/plays?order=bgame_id-asc&bgame_max=2000&bgame_min=2=1&min_date=2000-01-01&max_date=2018-01-01
+http://127.0.0.1/middleware/BoardGameManager/public/users?order=id_asc&filter=&min_id=1&max_id=200
+http://127.0.0.1/middleware/BoardGameManager/public/user/1
+http://127.0.0.1/middleware/BoardGameManager/public/board-games?order=id_asc&filter=&min_id=0&max_id=2000
+http://127.0.0.1/middleware/BoardGameManager/public/board-game/1
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+## Post Requests
+
+post /user
+post /board-game
+post /play
+post /user/{user_id}/plays/search
