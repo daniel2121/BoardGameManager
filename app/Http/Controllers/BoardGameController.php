@@ -13,10 +13,27 @@ class BoardGameController extends Controller
 {
     //
     public function add_board_game(Request $request) {
+
+      $fileName = "";
+      if ($request->hasFile('cover')){
+        $file = $request->file('cover');
+
+        // $extension = $file->getClientOriginalExtension();
+        $fileName = $file->getClientOriginalName();
+
+        $destinationPath = public_path().'/images/';
+        // $fileName = $red_id . '.' . $extension;
+
+        $file->move($destinationPath, $fileName);
+
+        // Red_Pages::where('club_id','=',$club_id)->update(['cover' => $fileName]);
+      }
+
       board_game::insert([
         'name' => $request['name'],
         'designers' => $request['designers'],
-        'cover' => $request['cover']
+        // 'cover' => $request['cover']
+        'cover' => $fileName
       ]);
 
       return Redirect::back()->withSuccess('Message sent!');

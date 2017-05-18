@@ -114,7 +114,7 @@ div.tab button.active {
 </div>
 
 <div id="Addboardgames" class="tabcontent">
-  <form action="{{URL::to('/')}}/board-game" method="POST">
+  <form action="{{URL::to('/')}}/board-game" method="POST" enctype="multipart/form-data">
   <fieldset>
     <legend>Add Board Game:</legend>
     Name:<br>
@@ -122,7 +122,8 @@ div.tab button.active {
     <br>Designers:<br>
     <input type="text" name="designers" value="">
     <br>Cover:<br>
-    <input type="text" name="cover" value="">
+    <!-- <input type="text" name="cover" value=""> -->
+    <input type="file" name="cover" value="">
     <br><br>
     <input type="submit" value="Submit">
   </fieldset>
