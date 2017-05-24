@@ -27,8 +27,8 @@ tr:nth-child(even) {
     <th>Name</th>
   </tr>
   <tr>
-    <td><a href="{{URL::to('/')}}/user/{{$user->id}}">{{$user->id}}</a></td>
-    <td><a href="{{URL::to('/')}}/user/{{$user->id}}">{{$user->name}}</a></td>
+    <td><a href="{{URL::to('/')}}/users/{{$user->id}}">{{$user->id}}</a></td>
+    <td><a href="{{URL::to('/')}}/users/{{$user->id}}">{{$user->name}}</a></td>
   </tr>
 </table>
 

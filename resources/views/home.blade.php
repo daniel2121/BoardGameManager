@@ -60,7 +60,7 @@ div.tab button.active {
 <div id="Createuser" class="tabcontent">
   <!-- <h3>Create user</h3> -->
   <!-- <p>London is the capital city of England.</p> -->
-  <form action="{{URL::to('/')}}/user" method="POST">
+  <form action="{{URL::to('/')}}/users" method="POST">
   <fieldset>
     <legend>Create User:</legend>
     Name:<br>
@@ -114,7 +114,7 @@ div.tab button.active {
 </div>
 
 <div id="Addboardgames" class="tabcontent">
-  <form action="{{URL::to('/')}}/board-game" method="POST" enctype="multipart/form-data">
+  <form action="{{URL::to('/')}}/board-games" method="POST" enctype="multipart/form-data">
   <fieldset>
     <legend>Add Board Game:</legend>
     Name:<br>
@@ -161,7 +161,7 @@ div.tab button.active {
 </div>
 
 <div id="Createplay" class="tabcontent">
-  <form action="{{URL::to('/')}}/play" method="POST">
+  <form action="{{URL::to('/')}}/plays" method="POST">
   <fieldset>
     <legend>Create Play:</legend>
     User ID:<br>
@@ -190,19 +190,19 @@ div.tab button.active {
 
 <script>
 function processUser() {
-  var url= "{{URL::to('/')}}/user/" + document.getElementById("url").value;
+  var url= "{{URL::to('/')}}/users/" + document.getElementById("url").value;
   location.href=url;
   return false;
 }
 
 function processBoardGame() {
-  var url= "{{URL::to('/')}}/board-game/" + document.getElementById("url2").value;
+  var url= "{{URL::to('/')}}/board-games/" + document.getElementById("url2").value;
   location.href=url;
   return false;
 }
 
 function processPlays() {
-  var url= "{{URL::to('/')}}/user/" + document.getElementById("url3").value + "/plays";
+  var url= "{{URL::to('/')}}/users/" + document.getElementById("url3").value + "/plays";
   location.href=url;
   return false;
 }
